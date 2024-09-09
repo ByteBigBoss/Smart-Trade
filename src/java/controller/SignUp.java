@@ -81,7 +81,7 @@ public class SignUp extends HttpServlet {
                 int code = Generate.RANDOM_VERIFICATION_CODE();
 
                 //SET USER PROPERTIES
-                User user = new User();
+                final User user = new User();
                 user.setEmail(userDTO.getEmail());
                 user.setFirst_name(userDTO.getFirst_name());
                 user.setLast_name(userDTO.getLast_name());
