@@ -2,6 +2,7 @@ package controller;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import dto.PayHereDTO;
 import dto.UserDTO;
 import entity.Address;
 import entity.City;
@@ -161,7 +162,37 @@ public class Checkout extends HttpServlet {
 
     }
     
-    private void saveOrders(){
+    private void saveOrders(Session session, Transaction transaction, User user, Address address, JsonObject responseJsonObject){
+        
+        try {
+            //CREATE ORDER IN DB
+            
+            
+        } catch (Exception e) {
+        }
+        
+        //GET DATA FOR PayHere
+        
+        //START: SET PAYMENT DATA
+        PayHereDTO payHereDTO = new PayHereDTO();
+        payHereDTO.setMerchant_id(""); //*
+        
+        payHereDTO.setReturn_url(""); //*
+        payHereDTO.setNotify_ur("");
+        payHereDTO.setCancel_url("");
+        
+        payHereDTO.setFirst_name(user.getFirst_name());
+        payHereDTO.setLast_name(user.getLast_name());
+        payHereDTO.setEmail(user.getEmail());
+        payHereDTO.setPhone("");
+        payHereDTO.setAddress("");
+        payHereDTO.setCity("");
+        payHereDTO.setCountry("");
+        payHereDTO.setOrder_id("");
+        payHereDTO.setItems("");
+        payHereDTO.setCurrency("");
+        payHereDTO.setAmount("");
+        
         
     }
 

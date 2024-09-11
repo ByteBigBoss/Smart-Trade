@@ -1,3 +1,21 @@
+// Payment completed. It can be a successful failure.
+payhere.onCompleted = function onCompleted(orderId) {
+    console.log("Payment completed. OrderID:" + orderId);
+    // Note: validate the payment and show success or failure page to the customer
+};
+
+// Payment window closed
+payhere.onDismissed = function onDismissed() {
+    // Note: Prompt user to pay again or show an error page
+    console.log("Payment dismissed");
+};
+
+// Error occurred
+payhere.onError = function onError(error) {
+    // Note: show an error page
+    console.log("Error:" + error);
+};
+
 const popup = Notification();
 
 async function loadData() {
@@ -91,10 +109,10 @@ async function loadData() {
                 sub_total += item_sub_total;
 
                 st_item_clone.querySelector("#st-item-subtotal").innerHTML = new Intl.NumberFormat(
-                        "en-US",
-                        {
-                            minimumFractionDigits: 2
-                        }
+                    "en-US",
+                    {
+                        minimumFractionDigits: 2
+                    }
                 ).format(item_sub_total);
 
                 st_body.appendChild(st_item_clone);
@@ -102,10 +120,10 @@ async function loadData() {
             });
 
             st_order_subtotal_tr.querySelector("#st-subtotal").innerHTML = new Intl.NumberFormat(
-                    "en-US",
-                    {
-                        minimumFractionDigits: 2
-                    }
+                "en-US",
+                {
+                    minimumFractionDigits: 2
+                }
             ).format(sub_total);
             st_body.appendChild(st_order_subtotal_tr);
 
@@ -126,20 +144,20 @@ async function loadData() {
                 }
 
                 st_order_shipping_tr.querySelector("#st-shipping-amount").innerHTML = new Intl.NumberFormat(
-                        "en-US",
-                        {
-                            minimumFractionDigits: 2
-                        }
+                    "en-US",
+                    {
+                        minimumFractionDigits: 2
+                    }
                 ).format(shipping_amount);
                 st_body.appendChild(st_order_shipping_tr);
 
                 //update total
                 let total = sub_total + shipping_amount;
                 st_order_total_tr.querySelector("#st-total").innerHTML = new Intl.NumberFormat(
-                        "en-US",
-                        {
-                            minimumFractionDigits: 2
-                        }
+                    "en-US",
+                    {
+                        minimumFractionDigits: 2
+                    }
                 ).format(total);
                 st_body.appendChild(st_order_total_tr);
             });
@@ -184,14 +202,14 @@ async function checkout() {
     }
 
     const response = await fetch(
-            "Checkout",
-            {
-                method: "POST",
-                body: JSON.stringify(data),
-                headers: {
-                    "Content-Type": "application/json"
-                }
+        "Checkout",
+        {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
             }
+        }
     );
 
     if (response.ok) {
@@ -203,7 +221,7 @@ async function checkout() {
             popup.success({
                 message: "Checkout Completed"
             });
-
+            window.location = "index.html";
         } else {
             popup.error({
                 message: json.message

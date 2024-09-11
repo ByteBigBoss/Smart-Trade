@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="assets/css/vendor/magnific-popup.css">
         <link rel="stylesheet" href="assets/css/vendor/base.css">
         <link rel="stylesheet" href="assets/css/style.min.css">
-
+         <link rel="stylesheet" href="assets/css/notification.css">
     </head>
 
 
@@ -247,7 +247,7 @@
                                         </form>
                                     </div>
                                 </div>
-                                <button class="axil-btn btn-bg-secondary">Apply</button>
+                                <button class="axil-btn btn-bg-secondary" onclick="searchProducts();">Apply</button>
                                 <button class="axil-btn btn-bg-primary mt--10">Reset All</button>
                             </div>
                             <!-- End .axil-shop-sidebar -->
@@ -588,7 +588,8 @@
 
         <!-- Main JS -->
         <script src="assets/js/main.js"></script>
-
+        <script src="assets/js/notification.js"></script>
+         <script src="assets/js/search.js"></script>
         <script>
         const categoryOptions = document.querySelectorAll('#category-options li');
         categoryOptions.forEach(option => {

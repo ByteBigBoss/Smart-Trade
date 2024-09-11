@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
@@ -31,7 +32,7 @@ public class SignUp extends HttpServlet {
 
         //RESPONSE OBJECT
         ResponseDTO resDTO = new ResponseDTO();
-
+        
         //GSON BUILDER: => EXCLUDE EXPOSE ANNOTATED FIELD'S FROM SERIALIZATION (RESPONSE)
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
@@ -68,7 +69,7 @@ public class SignUp extends HttpServlet {
 
             //OPEN SESSION
             Session session = HibernateUtil.getSessionFactory().openSession();
-
+            
             //CHECK USER EXIST OR NOT
             Criteria criteria1 = session.createCriteria(User.class);
             criteria1.add(Restrictions.eq("email", userDTO.getEmail()));
